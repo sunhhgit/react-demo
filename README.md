@@ -12,6 +12,24 @@ cd  ../../reactdemo
 npm start    或者   yarn start  运行项目
 运行之后浏览器会自动打开，如果没有打开并且cmd提示安装成功的话。可以手动在浏览器访问 http://localhost:3000即可。
 
+create-react-app 使用装饰器报错Support for the experimental syntax ‘decorators-legacy’ isn’t currently…@TOC
+
+1、使用customize-cra、react-app-rewired
+npm install  customize-cra react-app-rewired @babel/plugin-proposal-decorators --save
+
+2、在项目根目录创建config-overrides.js
+const { override, addDecoratorsLegacy } = require('customize-cra');
+module.exports = override(
+ addDecoratorsLegacy()
+ );
+
+3、修改package.json的scripts
+"scripts": {
+ "start": "react-app-rewired start",
+ "build": "react-app-rewired build",
+ "test": "react-app-rewired test",
+ "eject": "react-app-rewired eject"
+  }
 
 # React基础
 
